@@ -1,23 +1,25 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 
+// const Sushi = ({ sush: { name, price, img_url } }) => {
 const Sushi = (props) => {
+  const {
+    sush: { id, name, price, img_url, isEaten },
+    eatSushi,
+  } = props;
+
   return (
     <div className="sushi">
-      <div className="plate" 
-           onClick={/* Give me a callback! */ null}>
-        { 
-          /* Tell me if this sushi has been eaten! */ 
-          false ?
-            null
-          :
-            <img src={/* Give me an image source! */ } width="100%" />
+      <div className="plate" onClick={() => eatSushi(id, price)}>
+        {
+          /* Tell me if this sushi has been eaten! */
+          isEaten ? null : <img src={img_url} width="100%" />
         }
       </div>
       <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+        {name} - ${price}
       </h4>
     </div>
-  )
-}
+  );
+};
 
-export default Sushi
+export default Sushi;
